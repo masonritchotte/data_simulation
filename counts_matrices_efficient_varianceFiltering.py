@@ -5,7 +5,7 @@ import os
 import time
 
 # Parameters
-size = 1000  # number of cells to subset
+size = 2500  # number of cells to subset
 
 # Input H5ad file and Output directory
 H5AD_FILE = "/home/mzr19001/datasets/GSE194122_openproblems_neurips2021_multiome_BMMC_processed.h5ad"
@@ -33,9 +33,10 @@ print('Extracting RNA UMI count matrices')
 # Subset the first `size` cells and RNA features
 rna_matrix = adata[:size, rna_mask].layers["counts"]
 
-# Convert to dense (if not already) and compute variance for each gene (feature)
-# Since the matrix is (cells x genes), we compute variance over axis=0.
-rna_matrix_dense = rna_matrix.A  # convert sparse matrix to a dense numpy array
+# Convert the sparse matrix to a dense numpy array
+rna_matrix_dense = rna_matrix.toarray()
+
+# Compute variance for each gene (feature) across cells (axis=0)
 rna_variance = rna_matrix_dense.var(axis=0)
 
 # Select the indices for the top 1000 genes with highest variance
@@ -66,8 +67,10 @@ print('Extracting ATAC Peak count matrices')
 # Subset the first `size` cells and ATAC features
 atac_matrix = adata[:size, atac_mask].layers["counts"]
 
-# Convert to dense and compute variance for each ATAC feature (peak)
-atac_matrix_dense = atac_matrix.A
+# Convert the sparse matrix to a dense numpy array
+atac_matrix_dense = atac_matrix.toarray()
+
+# Compute variance for each ATAC feature (peak) across cells (axis=0)
 atac_variance = atac_matrix_dense.var(axis=0)
 
 # Select the indices for the top 5000 peaks with highest variance
