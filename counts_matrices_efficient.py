@@ -5,6 +5,8 @@ import os
 import subprocess
 import time
 
+# DEPRECATED
+
 # Parameters
 size = 1000
 
