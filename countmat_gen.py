@@ -6,13 +6,13 @@ import time
 
 # Parameters for cell sampling and feature selection
 size = 2500                     # Total number of cells to sample
-desired_num_cell_types = 3      # Number of unique cell types to include (complexity)
+desired_num_cell_types = 4      # Number of unique cell types to include (complexity)
 balanced = True                 # True: sample equal numbers from each selected cell type; False: imbalanced sampling
 
 # Input H5ad file and Output directory
 H5AD_FILE = "/home/mzr19001/datasets/GSE194122_openproblems_neurips2021_multiome_BMMC_processed.h5ad"
-OUTPUT_DIR = "/home/mzr19001/outputs/"
-CELL_TYPES_FILE = "/home/mzr19001/outputs/cell_types.txt"  # Assumed one-column file without header
+OUTPUT_DIR = "/home/mzr19001/data_simulation/Results"
+CELL_TYPES_FILE = "/home/mzr19001/data_simulation/cell_types.txt"  # Assumed one-column file without header
 
 # Ensure output directory exists
 os.makedirs(OUTPUT_DIR, exist_ok=True)
