@@ -5,8 +5,8 @@ import os
 import time
 
 # Parameters for cell sampling and feature selection
-size = 1000                     # Total number of cells to sample
-desired_num_cell_types = 3       # Number of unique cell types to include (complexity)
+size = 2500                     # Total number of cells to sample
+desired_num_cell_types = 3      # Number of unique cell types to include (complexity)
 balanced = True                 # True: sample equal numbers from each selected cell type; False: imbalanced sampling
 
 # Input H5ad file and Output directory
@@ -111,7 +111,7 @@ print("Shape of filtered RNA UMI count matrix:", rna_umi_counts.shape)
 # Write RNA data to file
 print('Starting RNA write at', time.ctime())
 rna_df = pd.DataFrame(rna_umi_counts, index=rna_index)
-rna_filename = os.path.join(OUTPUT_DIR, f"RNA_countmatrix_{size}cell_top1000genes.txt")
+rna_filename = os.path.join(OUTPUT_DIR, f"RNA_countmatrix_{size}cell_{desired_num_cell_types}_{balanced}_top1000genes.txt")
 rna_df.to_csv(rna_filename, sep='\t', header=False)
 print('Finished RNA write at', time.ctime())
 
@@ -144,7 +144,7 @@ print("Shape of filtered ATAC peak count matrix:", atac_peak_counts.shape)
 # Write ATAC data to file
 print('Starting ATAC write at', time.ctime())
 atac_df = pd.DataFrame(atac_peak_counts, index=atac_index)
-atac_filename = os.path.join(OUTPUT_DIR, f"ATAC_countmatrix_{size}cell_top5000peaks.txt")
+atac_filename = os.path.join(OUTPUT_DIR, f"ATAC_countmatrix_{size}cell_{desired_num_cell_types}_{balanced}_top5000peaks.txt")
 atac_df.to_csv(atac_filename, sep='\t', header=False)
 print('Finished ATAC write at', time.ctime())
 
@@ -153,7 +153,7 @@ print('Finished ATAC write at', time.ctime())
 #################################
 # Subset the cell types Series to the sampled indices (if you want to preserve the cell-type labels for the sampled cells)
 sampled_cell_types = cell_types.iloc[sampled_indices]
-cell_types_filename = os.path.join(OUTPUT_DIR, f"cell_types_{size}.txt")
+cell_types_filename = os.path.join(OUTPUT_DIR, f"cell_types_{size}_{desired_num_cell_types}_{balanced}.txt")
 sampled_cell_types.to_csv(cell_types_filename, sep='\t', header=False, index=False)
 
 # Ending
