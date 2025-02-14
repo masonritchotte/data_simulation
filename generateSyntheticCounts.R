@@ -3,13 +3,13 @@
 # Independent Rscript and python script since loading R packages are different
 
 # Launch Command:
-# Rscript /home/mzr19001/generateSyntheticCounts.R \
-#     "RNA_countmatrix_2500cell_filtered" \
-#     "ATAC_countmatrix_2500cell_filtered" \
-#     "/home/mzr19001/outputs/" \
-#     "/home/mzr19001/outputs/synthetic" \
+# Rscript /home/mzr19001/data_simulation/generateSyntheticCounts.R \
+#     "RNA_countmatrix_2500cell_4_True_top1000genes" \
+#     "ATAC_countmatrix_2500cell_4_True_top5000peaks" \
+#     "/home/mzr19001/data_simulation/Results" \
+#     "/home/mzr19001/data_simulation/Results/synthetic" \
 #     "default" \
-#     "/home/mzr19001/outputs/cell_types_2500.txt" \
+#     "/home/mzr19001/data_simulation/Results/cell_types_2500_4_True.txt" \
 #     "default" \
 #     "1"
 
