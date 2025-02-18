@@ -6,7 +6,7 @@ import time
 
 # Parameters for cell sampling and feature selection
 size = 2500                     # Total number of cells to sample
-desired_num_cell_types = 4      # Number of unique cell types to include (complexity)
+desired_num_cell_types = 15     # Number of unique cell types to include (complexity)
 balanced = True                 # True: sample equal numbers from each selected cell type; False: imbalanced sampling
 
 # Input H5ad file and Output directory

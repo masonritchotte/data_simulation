@@ -4,12 +4,12 @@
 
 # Launch Command:
 # Rscript /home/mzr19001/data_simulation/generateSyntheticCounts.R \
-#     "RNA_countmatrix_2500cell_4_True_top1000genes" \
-#     "ATAC_countmatrix_2500cell_4_True_top5000peaks" \
+#     "RNA_countmatrix_2500cell_15_True_top1000genes" \
+#     "ATAC_countmatrix_2500cell_15_True_top5000peaks" \
 #     "/home/mzr19001/data_simulation/Results" \
 #     "/home/mzr19001/data_simulation/Results/synthetic" \
 #     "default" \
-#     "/home/mzr19001/data_simulation/Results/cell_types_2500_4_True.txt" \
+#     "/home/mzr19001/data_simulation/Results/cell_types_2500_15_True.txt" \
 #     "default" \
 #     "1"
 
@@ -101,7 +101,7 @@ scMultiOmics_runSyntheticCount <- function(samplename_RNA, samplename_ATAC, dire
       synthetic_cell_label <- new_sce$new_covariate$cell_type
     }
     cat(sprintf("[scReadSim] Writing out synthetic cell labels to %s...\n", out_directory))
-    write.table(synthetic_cell_label, sprintf("%s/scMultiOmics.scDesign3Simulated.CellTypeLabel.txt", out_directory), row.names = FALSE,col.names = FALSE, quote = FALSE)
+    write.table(synthetic_cell_label, sprintf("%s/scMultiOmics.scDesign3Simulated.CellTypeLabel.2500.15.True.txt", out_directory), row.names = FALSE,col.names = FALSE, quote = FALSE)
     cat(sprintf("[scReadSim] Writing out synthetic count matrices to %s...\n", out_directory))
     write.table(synthetic_RNA_mat, sprintf("%s/%s.scMultiOmics.scDesign3Simulated.RNA.txt", out_directory, samplename_RNA), sep="\t", row.names = TRUE,col.names = FALSE)
     write.table(synthetic_ATAC_mat, sprintf("%s/%s.scMultiOmics.scDesign3Simulated.ATAC.txt", out_directory, samplename_ATAC), sep="\t", row.names = TRUE,col.names = FALSE)
